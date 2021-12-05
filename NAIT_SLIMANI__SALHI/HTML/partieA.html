@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Circuit VLSI</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="styleMenu.css">
+</head>
+<body>
+<nav>
+<ul>
+<li ><a class="accueil1" href="../ViaMin.html">Accueil</a></li>
+<li><a href="circuit.html">Circuit</a></li>
+<li><a href="IntersectionHTML/test5.netInter.html
+                                                                                                       
+">Intersection</a></li>
+<li><a href="complexite.html">Complexite</a></li>
+<li><a class="accueil2" href="partieB.html">Partie B</a></li>
+</ul>
+</nav>
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+<h3 style="color: green;text-align: center">Circuits VLSI et recherche d'intersections</h3>
+<div style="padding: 20px 80px;font-size: 15px;line-height: 26px;color: #333;">
+<p style="text-indent: 50px;">
+Parmi les problèmes les plus courants dans le domaine de l’électronique est on trouve le problème de conception de circuits VLSI qui est le processus de positionnement des circuits VLSI sur des supports en prenant compte toutes les caractéristiques des réseaux.<br>
+Ce processus se découpe en plusieurs étapes et on distingue trois principalement trois qui sont le placement des composant , le routage des réseaux et l’affectation des réseaux au faces .
+</p>
+<img src="ViaMin.png" width="400" height="250" alt="" title="" style="display: block;margin-left: auto;margin-right: auto;"/>
+<p style="text-indent: 50px">
+  Cette dernière consiste a trouver les intersections entre les réseaux a vrai dire entre les segments des différents réseaux et cela peut être d’une complexité polynomiale avec des algorithmes naïfs, donc cette partie A de ce projet consiste a implémenter des algorithmes plus performant pour pouvoir traiter des très grandes instances ou cet algorithme naïf peut être très long, pour cela on a implémenté  un algorithme qui est une sorte de balayage avec une ligne verticale sur les segments horizontaux et cela en ayant les segments verticaux qui se trouve dans cette zone de balayage (ou x € [x min ,x max ] .Et cela nous diminue la complexité sauf dans des cas rares d’instance on pourra avoir une complexité polynomiale en O(n²) si la liste des segments qui sont dans la liste actuel est très grand qui vas nous augmenter la complexité de l’insertion et de la suppression au pire des cas O((n-1)*n/2), par exemple si on a n segments horizontales et superposés les uns au dessus des autres qui fera qu’on rajoute a chaque fois a la fin de la liste et on supprime a la fin de la liste et cela ignore carrément la boucle de recherche des segments horizontaux qui intersecte un segment vertical puisque on a aucun segment vertical .
+</p>
+<p style="text-indent: 50px">
+On a implémenter un troisième algorithme ou on a le même principe de fonctionnement,mais on change la structure qui stocke les segment horizontaux qui peuvent intersecter les segments verticaux.Donc on a choisis de la représenter par un arbre de recherche équilibré AVL. Et pour la recherche des segments qui peuvent intersecter un segment vertical de v(y1,y2),on cherche l’arbre ou se trouvent ces segments.
+</p>
+<p style="text-indent: 50px">
+Pour cela on a changé la fonction prem_apres (y) qui nous renvoie un AVL ou se trouve tous les segments qui peuvent intersecter V on cherchant le premiers arbre ou la racine est supérieure a y1 puis dans le résultat on cherche le premier arbre ou la racine est inférieure à y2 donc on aura que les segments inférieurs a y2 mais pas forcement supérieures a y2.La complexité sera O(n*log(n). 
+</p>
+</div>
+</div>
+</body>
+</html>
